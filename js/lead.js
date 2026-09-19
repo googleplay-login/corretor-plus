@@ -274,6 +274,14 @@
     return "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensagem);
   }
 
+  /* Caminho alternativo: se wa.me estiver bloqueado na rede da pessoa
+     (rede corporativa, filtro, sandbox de preview), api.whatsapp.com
+     costuma continuar acessivel e cai no mesmo atendimento. */
+  function linkWhatsappAlternativo(mensagem) {
+    var numero = String(C.whatsapp).replace(/\D/g, "");
+    return "https://api.whatsapp.com/send?phone=" + numero + "&text=" + encodeURIComponent(mensagem);
+  }
+
   /* ---------- copia espelho (9.3) ---------- */
   function copiaEspelho(lead) {
     var pessoas = (lead.pessoas || []).map(function (p) {
@@ -704,6 +712,16 @@
     a.textContent = "Abrir o WhatsApp e enviar";
     box.appendChild(a);
 
+    if (ultimo.waUrlAlt) {
+      var alt = global.document.createElement("a");
+      alt.href = ultimo.waUrlAlt;
+      alt.target = "_blank";
+      alt.rel = "noopener noreferrer";
+      alt.className = "btn btn-link";
+      alt.textContent = "O WhatsApp não abriu? Use o link alternativo";
+      box.appendChild(alt);
+    }
+
     var btnCopiar = global.document.createElement("button");
     btnCopiar.type = "button";
     btnCopiar.className = "btn btn-secundario";
@@ -750,6 +768,7 @@
     montarMensagem: montarMensagem,
     construirLinhas: construirLinhas,
     linkWhatsapp: linkWhatsapp,
+    linkWhatsappAlternativo: linkWhatsappAlternativo,
     copiaEspelho: copiaEspelho,
     hashEnvio: hashEnvio,
     verificarSpam: verificarSpam,

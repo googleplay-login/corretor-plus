@@ -901,3 +901,17 @@ textarea { min-height: 96px; resize: vertical; }
   margin-inline: auto;
   min-height: 72vh;
 }
+
+/* painel de resgate quando o WhatsApp nao abre (iframe/bloqueador) */
+.fallback-zap {
+  background: var(--azul-suave);
+  border: 2px solid var(--azul);
+  border-radius: var(--raio-md);
+  padding: var(--esp-4);
+  margin-bottom: var(--esp-5);
+}
+.fallback-zap p { color: var(--texto); font-size: .95rem; }
+.fallback-zap-acoes { display: flex; flex-direction: column; gap: var(--esp-3); }
+@media (min-width: 640px) {
+  .fallback-zap-acoes { flex-direction: row; flex-wrap: wrap; }
+}

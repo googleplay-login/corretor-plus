@@ -979,6 +979,11 @@
       }).catch(function () { });
     });
     acoes.appendChild(btnCopiar);
+    acoes.appendChild(el("a", {
+      class: "btn btn-link", href: L.linkWhatsappAlternativo(msg),
+      target: "_blank", rel: "noopener noreferrer",
+      text: "O WhatsApp não abriu? Use o link alternativo"
+    }));
     box.appendChild(acoes);
 
     box.appendChild(el("p", { class: "frase-confianca", text: "Seus dados vão direto para o WhatsApp do Carlos. Nada é vendido." }));
@@ -1039,6 +1044,7 @@
     S.gravar(S.CHAVES.ultimo, {
       leadId: lead.leadId,
       waUrl: url,
+      waUrlAlt: L.linkWhatsappAlternativo(msg),
       espelho: L.copiaEspelho(lead),
       criadoEm: lead.criadoEm,
       ts: agora
@@ -1064,10 +1070,53 @@
 
     if (win) {
       global.location.href = "obrigado.html";
+    } else if (global.top && global.self && global.top !== global.self) {
+      /* Rodando dentro de um iframe (ex.: preview embutido): navegar o
+         proprio frame ate wa.me seria recusado pelo sandbox. Mostra um
+         painel com o link clicavel, o alternativo e o botao copiar. */
+      mostrarFallbackPosEnvio(url, L.linkWhatsappAlternativo(msg), L.copiaEspelho(lead), lead.leadId);
+      w.enviando = false;
+      if (botao) {
+        botao.disabled = false;
+        botao.removeAttribute("aria-busy");
+      }
     } else {
       /* popup bloqueado: navega direto; o link continua visivel no obrigado */
       global.location.href = url;
     }
+  }
+
+  /* Painel de resgate quando o WhatsApp nao abre (iframe/bloqueador/rede). */
+  function mostrarFallbackPosEnvio(url, urlAlt, espelho, leadId) {
+    var raiz = D.getElementById("wizard-montagem");
+    if (!raiz) { return; }
+    var zona = raiz.querySelector(".wz-corpo");
+    if (!zona) { return; }
+    var antigo = D.getElementById("fallback-zap");
+    if (antigo) { antigo.remove(); }
+    var box = el("div", { class: "fallback-zap", id: "fallback-zap", role: "alert" });
+    box.appendChild(el("strong", { text: "O WhatsApp não abriu automaticamente." }));
+    box.appendChild(el("p", { text: "Sem problema: toque em um dos botões abaixo (abrem em nova aba) ou copie o resumo e me mande por lá." }));
+    var acoes = el("div", { class: "fallback-zap-acoes" });
+    var a1 = el("a", { class: "btn btn-acao", href: url, target: "_blank", rel: "noopener noreferrer" }, ["Abrir o WhatsApp"]);
+    a1.addEventListener("click", function () {
+      A.track("whatsapp_open", { lead_id: leadId || "", origem: "fallback" });
+    });
+    acoes.appendChild(a1);
+    acoes.appendChild(el("a", { class: "btn btn-secundario", href: urlAlt, target: "_blank", rel: "noopener noreferrer", text: "Link alternativo" }));
+    var bCopiar = el("button", { type: "button", class: "btn btn-volta", text: "Copiar resumo" });
+    bCopiar.addEventListener("click", function () {
+      L.copiarTexto(espelho).then(function () {
+        bCopiar.textContent = "Resumo copiado ✓";
+        A.track("copied_summary", { lead_id: leadId || "", origem: "fallback" });
+        global.setTimeout(function () { bCopiar.textContent = "Copiar resumo"; }, 2500);
+      }).catch(function () { });
+    });
+    acoes.appendChild(bCopiar);
+    box.appendChild(acoes);
+    box.setAttribute("tabindex", "-1");
+    zona.insertBefore(box, zona.firstChild);
+    box.focus();
   }
 
   /* ---------- validacao por etapa ---------- */

@@ -135,6 +135,9 @@ ok(msg.indexOf("&") === -1, "mensagem bruta não usa & cru (usa '·' e texto)");
 
 const url = L.linkWhatsapp(msg);
 ok(url.indexOf("https://wa.me/5521984479709?text=") === 0, "URL wa.me correta com número só de dígitos");
+const urlAlt = L.linkWhatsappAlternativo(msg);
+ok(urlAlt.indexOf("https://api.whatsapp.com/send?phone=5521984479709&text=") === 0, "URL alternativa api.whatsapp.com correta");
+ok(decodeURIComponent(urlAlt.slice(urlAlt.indexOf("text=") + 5)) === msg, "link alternativo preserva a mesma mensagem");
 ok(decodeURIComponent(url.slice(url.indexOf("text=") + 5)) === msg, "encodeURIComponent preserva acentos, & e quebras de linha na volta");
 ok(url.indexOf("&") === -1 || url.indexOf("%26") !== -1, "nenhum & cru dentro do texto codificado");
 ok(url.indexOf("#") === -1 || url.indexOf("%23") !== -1, "nenhum # cru dentro do texto codificado");
