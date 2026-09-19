@@ -1,0 +1,34 @@
+# Carlos Consultor - Apache
+# HTTPS forçado (quando o host tiver certificado - Netlify/cPanel/etc.)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# Cache: HTML sem cache (o lead recebe sempre a versao nova), assets com cache longo
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+</IfModule>
+
+# Seguranca
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Pagina de erro 404 com CTA do wizard
+ErrorDocument 404 /404.html
+
+# Tipos corretos
+AddType image/svg+xml .svg
+AddType application/manifest+json .webmanifest
+AddType text/plain .txt

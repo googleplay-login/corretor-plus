@@ -1,0 +1,19 @@
+{
+  "name": "Carlos Consultor - Planos de saúde em Niterói e região",
+  "short_name": "Carlos Consultor",
+  "description": "Simule seu plano de saúde em 6 perguntas e receba a proposta no WhatsApp.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0B5FFF",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

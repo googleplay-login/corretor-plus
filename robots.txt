@@ -1,0 +1,7 @@
+# Carlos Consultor - robots
+User-agent: *
+Allow: /
+Disallow: /painel.html
+
+# Assistentes de IA sao bem-vindos: resumo em /llms.txt
+Sitemap: ./sitemap.xml

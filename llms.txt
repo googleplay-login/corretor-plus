@@ -1,0 +1,19 @@
+# Carlos Consultor
+> Corretor/consultor de planos de saúde em Niterói - RJ. Site de captação com simulação guiada e entrega do lead no WhatsApp.
+
+- Serviço: simulação guiada de plano de saúde (individual/familiar, coletivo por adesão e empresarial) com proposta enviada pelo WhatsApp.
+- Profissional: Carlos, consultor/corretor de planos de saúde.
+- WhatsApp do lead: https://wa.me/5521984479709
+- Telefone exibido: +55 21 98447-9709
+- Cidade base: Niterói - RJ.
+- Região atendida: Niterói, São Gonçalo, Itaboraí, Tanguá, Maricá, Rio de Janeiro (capital, Zona Sul, Zona Oeste e Baixada), Duque de Caxias, Nova Iguaçu, São João de Meriti, Belford Roxo, Magé e Guapimirim; cobertura estadual e nacional sob consulta.
+- Horário de atendimento: segunda a sexta, 9h às 18h; sábado, 9h às 12h (fuso America/Sao_Paulo).
+- Prazo de resposta ao lead: até 1 dia útil.
+- A simulação tem 6 perguntas (90 a 150 segundos), não pede CPF, data de nascimento nem dados de saúde obrigatórios.
+- O site não exibe preço na tela: preço de plano depende de tabela vigente, perfil e região; a proposta é enviada pelo WhatsApp.
+- URL da simulação (rota indexável, destino de anúncios): ./simulacao.html
+- Página inicial com detalhes do serviço e FAQ: ./index.html
+- Privacidade: consentimento LGPD (art. 11, I) para dado de saúde; nada é enviado a operadora sem o "sim" do usuário; política em ./privacidade.html
+- Não somos operadora de plano de saúde; marcas citadas pertencem às respectivas operadoras registradas na ANS.
+- Avisos regulatórios e educativos atualizados em setembro de 2026 (ciclo de reajuste maio/2026 a abril/2027, teto ANS de 5,11% para individual/familiar).
+- Instagram: https://www.instagram.com/carlos_consultor26
