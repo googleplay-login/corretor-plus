@@ -600,14 +600,16 @@
     box.appendChild(zonaCidade);
 
     function norm(s) { return V.normalizarTexto(s); }
-    function cidadeAtendida(nome, ufSigla) {
+    function cidadeAtendida(nome) {
       if (!nome) { return true; }
       var alvo = norm(nome);
       var nasRegioes = (C.regioesAtendidas || []).some(function (r) { return norm(r) === alvo; });
       if (nasRegioes) { return true; }
       var m = global.DATA_MUNICIPIOS.filter(function (x) { return norm(x.nome) === alvo; })[0];
       if (m) { return !!m.atendida; }
-      return ufSigla === "RJ" ? false : false;
+      /* cidade fora das listas: tratada como fora da regiao so para exibir a
+         frase neutra de atendimento a distancia; o envio JAMAIS e bloqueado */
+      return false;
     }
 
     function montarCidade() {
@@ -660,7 +662,7 @@
       zonaCidade.appendChild(notaRegiao);
       function atualizarNotaRegiao() {
         var temNome = !!(dados.cidade && dados.cidade.trim().length >= 2);
-        var ok = temNome && cidadeAtendida(dados.cidade, dados.uf);
+        var ok = temNome && cidadeAtendida(dados.cidade);
         notaRegiao.hidden = !(temNome && !ok);
         if (!notaRegiao.hidden) {
           notaRegiao.textContent = "Atendo sua região também; nesse caso o atendimento é por WhatsApp ou vídeo.";
