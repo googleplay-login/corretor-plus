@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de leads (uso interno) | Carlos Consultor</title>
+  <meta name="description" content="Painel local de leitura dos leads guardados no navegador. Uso interno do corretor.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0B5FFF">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="data/ufs.js"></script>
+  <script defer src="data/municipios-rj.js"></script>
+  <script defer src="data/operadoras.js"></script>
+  <script defer src="data/hospitais.js"></script>
+  <script defer src="data/mercado.js"></script>
+  <script defer src="js/validate.js"></script>
+  <script defer src="js/state.js"></script>
+  <script defer src="js/analytics.js"></script>
+  <script defer src="js/lead.js"></script>
+  <script defer src="js/wizard.js"></script>
+</head>
+<body data-page="painel">
+  <header class="topo">
+    <div class="container topo-linha">
+      <a class="marca" href="index.html">Carlos Consultor
+        <small>Painel interno de leads</small>
+      </a>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section>
+      <div class="container">
+        <h1>Painel de leads</h1>
+        <p class="secao-intro">Os leads ficam guardados <strong>só neste navegador</strong> (localStorage do dispositivo que recebeu o envio). Exporte o CSV de vez em quando para não depender do histórico do navegador.</p>
+
+        <div id="painel-gate" hidden>
+          <form id="painel-form" class="campo-grupo" style="max-width:420px;">
+            <label class="wz-grupo-titulo" for="painel-senha">Senha do painel</label>
+            <input type="password" id="painel-senha" name="senha" autocomplete="current-password" required>
+            <p class="erro" id="painel-erro" role="alert" hidden></p>
+            <button type="submit" class="btn btn-acao">Entrar</button>
+          </form>
+        </div>
+
+        <div id="painel-conteudo"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Painel de uso interno. Nenhum dado desta página é enviado para a internet.</p>
+      <ul class="rodape-links">
+        <li><a href="index.html">Voltar para o site</a></li>
+        <li><a href="privacidade.html">Política de Privacidade</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <div id="consent-root"></div>
+</body>
+</html>

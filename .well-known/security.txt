@@ -1,0 +1,4 @@
+Contact: https://www.instagram.com/carlos_consultor26
+Canonical: ./.well-known/security.txt
+Preferred-Languages: pt-BR
+Expires: 2027-09-19T00:00:00-03:00

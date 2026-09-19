@@ -1,0 +1,8 @@
+/* SITE */
+Site: Carlos Consultor - simulação de planos de saúde (Niterói - RJ)
+Última atualização: 2026-09-19
+Linguagem: português do Brasil (pt-BR)
+Tecnologia: HTML5 + CSS3 + JavaScript nativo (ES2020), 100% estático, sem dependência externa
+Responsável: Carlos - corretor/consultor de planos de saúde
+Canal: https://wa.me/5521984479709
+Contato de imprensa/dados: pelo mesmo WhatsApp

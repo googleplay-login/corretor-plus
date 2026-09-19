@@ -1,0 +1,8 @@
+# Carlos Consultor - Netlify/Cloudflare Pages
+# Redirecionamentos de paginas antigas e erro 404 com CTA
+/painel            /painel.html 200
+/simulacao         /simulacao.html 200
+/obrigado          /obrigado.html 200
+/privacidade       /privacidade.html 200
+/termos            /termos.html 200
+/*                 /404.html 404
