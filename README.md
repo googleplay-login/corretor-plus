@@ -30,7 +30,7 @@ site.webmanifest · .htaccess (Apache) · _redirects (Netlify/Cloudflare)
 .well-known/security.txt
 ```
 
-O app React antigo que estava na raiz do repositório foi preservado em `_legado-crm-react/` (nada foi apagado; ele não faz parte do site estático).
+O app React (CRM) que existia neste repositório foi removido da árvore para o deploy estático ficar limpo (Vercel/Netlify/Pages). Ele continua recuperável no histórico do Git (commit `a856a51`).
 
 ## 2. O que editar: sempre só `js/config.js`
 
